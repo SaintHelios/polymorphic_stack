@@ -58,6 +58,15 @@ template <typename T> poly_stack<T>::poly_stack(size_t size) {
 }
 
 template <typename T> void poly_stack<T>::push(T* obj) {
+	if (top == size - 1) { 
+		size += 10;
+		T** copy_to = new T * [size];
+		for (size_t i = 0; i < size - 10; ++i) {
+			copy_to[i] = pointers_array[i]->clone();
+		}
+		clear();                       
+		pointers_array = copy_to;
+	}
 	if (top + 1 <= highest_top) {
 		delete pointers_array[top + 1];
 		pointers_array[top + 1] = obj->clone();
