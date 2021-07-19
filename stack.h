@@ -30,15 +30,11 @@ template <typename T> void poly_stack<T>::push(T& obj) {
 		pointers_array = copy_to;
 	}
 
-	if (top + 1 <= highest_top) {
+	if (top + 1 <= highest_top) { 
 		delete pointers_array[top + 1];
-		pointers_array[top + 1] = obj.clone();
-		++top;
-	}
-	else {
-		pointers_array[top + 1] = obj.clone();
-		++top;
-	}
+	} 
+	pointers_array[top + 1] = obj.clone();
+	++top;
 	change_ht();
 }
 
@@ -67,15 +63,11 @@ template <typename T> void poly_stack<T>::push(T* obj) {
 		clear();                       
 		pointers_array = copy_to;
 	}
-	if (top + 1 <= highest_top) {
+	if (top + 1 <= highest_top) { 
 		delete pointers_array[top + 1];
-		pointers_array[top + 1] = obj->clone();
-		++top;
-	}
-	else {
-		pointers_array[top + 1] = obj->clone();
-		++top;
-	}
+	} 
+	pointers_array[top + 1] = obj->clone();
+	++top;
 	change_ht();
 }
 
